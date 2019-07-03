@@ -29,7 +29,6 @@ class TestRssChecker(TestCase):
 
         feed_urls_by_companies = {'bill_maher': 'test_inputs/bill_maher.xml',
                                   'bill_simmons': 'test_inputs/bill_simmons.xml'}
-
         with self.subTest(feed_urls_by_companies=feed_urls_by_companies):
             # time stamps of the latest items
             bill_maher_latest = calendar.timegm((2019, 7, 1, 20, 25, 4, 0, 182, 0))
