@@ -1,6 +1,6 @@
 # rss_checker
 
-## Usage: ##
+## Usage ##
 The purpose and interface of `find_inactive` in `rss_checker.py` is specified in the docstring of the function. To avoid
 unneeded duplication, they will not be restated here. Here is, however, an example of its usage.
 
@@ -15,7 +15,7 @@ days_of_inactivity = 1
 inactive_feeds = rss_checker.find_inactive(rss_feeds_by_company_names, days_of_inactivity)
 ```
 
-## Assumptions: ##
+## Assumptions ##
 According to [RSS Specification](http://www.rssboard.org/rss-specification "RSS Specification"), the `pubDate` element
 is optional in both the `channel` element and any `item` element in a RSS feed. Assuming the intent of the 
 `find_inactive` function is to identify RSS feeds that are without any new items for a specified number of days, the
@@ -23,7 +23,7 @@ is optional in both the `channel` element and any `item` element in a RSS feed. 
 function. Additionally, an item is always considered to be older than the specified number of days given to the function
 if the item doesn't have an `pubDate` element.
 
-## Execution Environment: ##
+## Execution Environment ##
 The `find_inactive` function requires [feedparser](https://github.com/kurtmckee/feedparser) to function. To install
 feedparser in your Python environment, type the following command in your Unix terminal.
 ```
