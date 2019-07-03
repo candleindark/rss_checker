@@ -2,7 +2,7 @@ from unittest import TestCase
 import time
 import calendar
 
-SECONDS_IN_DAY = 60 * 60 * 24
+DAY_IN_SECONDS = 60 * 60 * 24
 
 
 class TestRssChecker(TestCase):
@@ -20,6 +20,6 @@ class TestRssChecker(TestCase):
         time_elapsed_bill_simmons = time.time() - bill_simmons_latest
 
         # The number of days elapsed since the feed with the earliest latest activity
-        max_days_elapsed = max(time_elapsed_bill_maher, time_elapsed_bill_simmons) // SECONDS_IN_DAY
+        max_days_elapsed = max(time_elapsed_bill_maher, time_elapsed_bill_simmons) // DAY_IN_SECONDS
 
         self.assertEqual(find_inactive(feed_urls_by_companies, max_days_elapsed), [])
