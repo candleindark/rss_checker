@@ -15,7 +15,7 @@ class TestRssChecker(TestCase):
             self.assertEqual([], find_inactive(feed_urls_by_companies, 1))
             self.assertEqual([], find_inactive(feed_urls_by_companies, 99))
 
-        feed_urls_by_companies = {'bill_maher': 'http://billmaher.hbo.libsynpro.com/rss'}
+        feed_urls_by_companies = {'bill_maher': 'test_inputs/bill_maher.xml'}
         with self.subTest(feed_urls_by_companies=feed_urls_by_companies):
             # time stamp of the latest item
             bill_maher_latest = calendar.timegm((2019, 7, 1, 20, 25, 4, 0, 182, 0))
@@ -27,8 +27,8 @@ class TestRssChecker(TestCase):
             self.assertEqual([], find_inactive(feed_urls_by_companies, days_elapsed_bill_maher + 1))
             self.assertEqual(['bill_maher'], find_inactive(feed_urls_by_companies, days_elapsed_bill_maher - 1))
 
-        feed_urls_by_companies = {'bill_maher': 'http://billmaher.hbo.libsynpro.com/rss',
-                                  'bill_simmons': 'https://rss.art19.com/the-bill-simmons-podcast'}
+        feed_urls_by_companies = {'bill_maher': 'test_inputs/bill_maher.xml',
+                                  'bill_simmons': 'test_inputs/bill_simmons.xml'}
 
         with self.subTest(feed_urls_by_companies=feed_urls_by_companies):
             # time stamps of the latest items
