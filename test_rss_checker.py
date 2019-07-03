@@ -45,3 +45,9 @@ class TestRssChecker(TestCase):
             days_elapsed_bill_simmons = time_elapsed_bill_simmons // DAY_IN_SECONDS
             self.assertEqual(['bill_maher'], find_inactive(feed_urls_by_companies, days_elapsed_bill_simmons + 1))
 
+        feed_urls_by_companies = {'bill_maher': 'test_inputs/bill_maher.xml',
+                                  'bill_simmons': 'test_inputs/bill_simmons.xml',
+                                  'bbc_europe': 'test_inputs/bbc_europe.xml'}
+        with self.subTest(feed_urls_by_companies=feed_urls_by_companies):
+            self.assertEqual(set(['bill_maher', 'bill_simmons', 'bbc_europe']),
+                             set(find_inactive(feed_urls_by_companies, 0)))
