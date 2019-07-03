@@ -16,6 +16,13 @@ inactive_feeds = rss_checker.find_inactive(rss_feeds_by_company_names, days_of_i
 ```
 
 ## Assumptions: ##
+According to [RSS Specification](http://www.rssboard.org/rss-specification "RSS Specification"), the `pubDate` element
+is optional in both the `channel` element and any `item` element in a RSS feed. Assuming the intent of the 
+`find_inactive` function is to identify RSS feeds that are without any new items for a specified number of days, the
+`pubDate` elements in items are the only `pubDate` elements in a RSS feed that are used to determine the output of the 
+function. Additionally, an item is always considered to be older than the specified number of days given to the function
+if the item doesn't have an `pubDate` element.
 
 ## Execution Environment: ##
+
 
