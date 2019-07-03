@@ -9,8 +9,14 @@ class TestRssChecker(TestCase):
     def test_find_inactive(self):
         from rss_checker import find_inactive
 
-        feed_urls_by_companies = {'bill_maher': 'test_inputs/bill_maher.xml',
-                                  'bill_simmons': 'test_inputs/bill_simmons.xml'}
+        feed_urls_by_companies = {}
+        with self.subTest(feed_urls_by_companies=feed_urls_by_companies):
+            self.assertEqual([], find_inactive(feed_urls_by_companies, 0))
+            self.assertEqual([], find_inactive(feed_urls_by_companies, 1))
+            self.assertEqual([], find_inactive(feed_urls_by_companies, 99))
+
+        feed_urls_by_companies = {'bill_maher': 'http://billmaher.hbo.libsynpro.com/rss',
+                                  'bill_simmons': 'https://rss.art19.com/the-bill-simmons-podcast'}
 
         with self.subTest(feed_urls_by_companies=feed_urls_by_companies):
             # time stamps of the latest items
@@ -26,3 +32,4 @@ class TestRssChecker(TestCase):
 
             days_elapsed_bill_simmons = time_elapsed_bill_simmons // DAY_IN_SECONDS
             self.assertEqual(['bill_maher'], find_inactive(feed_urls_by_companies, days_elapsed_bill_simmons + 1))
+
