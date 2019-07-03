@@ -12,10 +12,8 @@ class TestRssChecker(TestCase):
                                   'bill_simmons': 'test_inputs/bill_simmons.xml'}
 
         # time stamps of the latest items
-        bill_maher_latest = calendar.timegm(time.struct_time(tm_year=2019, tm_mon=7, tm_mday=1, tm_hour=20, tm_min=25,
-                                                             tm_sec=4, tm_wday=0, tm_yday=182, tm_isdst=0))
-        bill_simmons_latest = calendar.timegm(time.struct_time(tm_year=2019, tm_mon=7, tm_mday=2, tm_hour=23, tm_min=25,
-                                                               tm_sec=38, tm_wday=1, tm_yday=183, tm_isdst=0))
+        bill_maher_latest = calendar.timegm((2019, 7, 1, 20, 25, 4, 0, 182, 0))
+        bill_simmons_latest = calendar.timegm((2019, 7, 2, 23, 25, 38, 1, 183, 0))
 
         # time elapsed since the latest items
         time_elapsed_bill_maher = time.time() - bill_maher_latest
