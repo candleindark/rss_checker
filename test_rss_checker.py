@@ -19,10 +19,8 @@ class TestRssChecker(TestCase):
         time_elapsed_bill_maher = time.time() - bill_maher_latest
         time_elapsed_bill_simmons = time.time() - bill_simmons_latest
 
+        days_elapsed_bill_maher = time_elapsed_bill_maher // DAY_IN_SECONDS
+        self.assertEqual([], find_inactive(feed_urls_by_companies, days_elapsed_bill_maher + 1))
+
         days_elapsed_bill_simmons = time_elapsed_bill_simmons // DAY_IN_SECONDS
         self.assertEqual(['bill_maher'], find_inactive(feed_urls_by_companies, days_elapsed_bill_simmons + 1))
-
-        # The number of days elapsed since the feed with the earliest latest activity
-        max_days_elapsed = max(time_elapsed_bill_maher, time_elapsed_bill_simmons) // DAY_IN_SECONDS
-
-        self.assertEqual([], find_inactive(feed_urls_by_companies, max_days_elapsed + 1))
