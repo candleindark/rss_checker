@@ -22,4 +22,4 @@ class TestRssChecker(TestCase):
         # The number of days elapsed since the feed with the earliest latest activity
         max_days_elapsed = max(time_elapsed_bill_maher, time_elapsed_bill_simmons) // DAY_IN_SECONDS
 
-        self.assertEqual(find_inactive(feed_urls_by_companies, max_days_elapsed), [])
+        self.assertEqual([], find_inactive(feed_urls_by_companies, max_days_elapsed))
